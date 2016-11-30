@@ -5,7 +5,7 @@ RSpec.feature 'Link add new' do
 
     visit '/links/new'
     expect(page.status_code).to eq 200
-    
+
     fill_in 'title', :with => 'Github Pong'
     fill_in 'url', :with => 'https://github.com/makersacademy/course/blob/master/pills/github_pong.md'
     click_button "Add"
