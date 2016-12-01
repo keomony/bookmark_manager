@@ -1,5 +1,3 @@
-
-
 def add_link_with_tag
   visit '/links/new'
   fill_in "title", with: "Youtube"
