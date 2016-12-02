@@ -9,8 +9,4 @@ class Link
   property :url, String
 
   has n, :tags, :through => Resource
-
 end
-
-
-# DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/bookmark_manager_#{ENV['RACK_ENV']}")
