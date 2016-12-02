@@ -8,7 +8,6 @@ gem 'rake'
 gem 'data_mapper'
 gem 'dm-postgres-adapter'
 gem 'rspec-sinatra'
-gem 'rake'
 
 group :test do
   gem 'rspec'
