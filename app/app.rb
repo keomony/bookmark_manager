@@ -4,7 +4,18 @@ require './app/models/link'
 require './app/models/data_mapper_setup.rb'
 require 'pry'
 
+
 class Bookmark_manager < Sinatra::Base
+  enable :sessions
+
+  get '/' do
+    erb(:sign_in)
+  end
+
+  post '/sign_in' do
+    session[:email] = params[:email]
+    redirect '/links'
+  end
 
   get '/links/new' do
     erb(:'links/new')
