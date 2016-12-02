@@ -1,5 +1,6 @@
 require_relative 'link.rb'
 require_relative 'tag.rb'
+require_relative 'user.rb'
 require 'dm-migrations'
 require 'data_mapper'
 require 'dm-postgres-adapter'

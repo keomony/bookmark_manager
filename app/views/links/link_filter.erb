@@ -1,10 +1,9 @@
-<h1>Filter Results </h1>
+<h1>Filter Results: <%= params[:name] %> </h1>
 
 <ul id='filter_links'>
   <% @filter_links.each do |tag| %>
     <li>
-      Title: <%= tag.title %>
-      URL: <%= tag.url %>
+      Title: <a href=<%= tag.url %>> <%= tag.title %> </a>
     </li>
     <% end %>
 </ul>

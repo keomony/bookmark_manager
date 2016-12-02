@@ -2,6 +2,7 @@
 RSpec.feature "Filtering tags" do
 
   scenario "Will see a link tagged with bubbles" do
+    log_in
     add_link_with_tag
     visit '/links/new'
     fill_in "title", with: "Bubble Bath"
