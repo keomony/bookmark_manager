@@ -4,19 +4,26 @@ require './app/models/link'
 require './app/models/data_mapper_setup.rb'
 require 'pry'
 require './app/models/user.rb'
-
+require 'bcrypt'
 
 class Bookmark_manager < Sinatra::Base
   enable :sessions
+  helpers do
+    def current_user
+      User.first(id: session[:id])
+    end
+  end
 
   get '/' do
     erb(:sign_in)
   end
 
   post '/sign_in' do
-    User.first_or_create(email: params[:email], password: params[:password])
-    User.count
+    encrypted_password = BCrypt::Password.create(params[:password])
+    User.first_or_create(email: params[:email], password: encrypted_password)
     session[:email] = params[:email]
+    session[:id] = User.first(email: params[:email], password: encrypted_password).id
+    current_user
     redirect '/links'
   end
 

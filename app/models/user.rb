@@ -6,6 +6,6 @@ class User
   include DataMapper::Resource
   property :id, Serial
   property :email, String
-  property :password, String
+  property :password, String, :length => 70
 
 end
