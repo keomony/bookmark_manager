@@ -12,7 +12,7 @@ class Bookmark_manager < Sinatra::Base
 
   helpers do
     def current_user
-      User.first(id: session[:id])
+      @current_user ||= User.get(session[:id])
     end
   end
 
@@ -21,11 +21,10 @@ class Bookmark_manager < Sinatra::Base
   end
 
   post '/sign_in' do
-    encrypted_password = BCrypt::Password.create(params[:password])
-    User.first_or_create(email: params[:email], password: encrypted_password)
+    user = User.create(email: params[:email], password: params[:password])
     session[:email] = params[:email]
-    session[:id] = User.first(email: params[:email], password: encrypted_password).id
-    current_user
+    session[:id] = user.id
+    p current_user
     redirect '/links'
   end
 
